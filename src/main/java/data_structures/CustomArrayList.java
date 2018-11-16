@@ -57,6 +57,16 @@ public class CustomArrayList<T> {
 
     }
 
+    public void put(int index, T object)
+    {
+        if ( index >= this.size  || index < 0 )
+        {
+            throw new ArrayIndexOutOfBoundsException("Invalid index " + index);
+        }
+
+        this.elements[index] = object;
+    }
+
     private void increaseCapacity()
     {
         this.capacity *= 2;

@@ -1,13 +1,12 @@
 package data_structures.graph;
 
-public class Edge {
+public class OutboundEdge {
 
     private Node destination;
 
     private int weight;
 
-
-    public Edge(Node destination, int weight) {
+    public OutboundEdge(Node destination, int weight) {
         this.destination = destination;
         this.weight = weight;
     }
