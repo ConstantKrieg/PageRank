@@ -13,7 +13,7 @@ Currently the projects main class will count the PageRank values for the followi
 
 ![GRAPH](https://github.com/ConstantKrieg/PageRank/blob/master/doc/example_graph.png?raw=true)
 
-Currently it is assumed that the weight of every node is 1.
+Currently it is assumed that the weight of every edge is 1.
 
 
 
