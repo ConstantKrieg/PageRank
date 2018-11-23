@@ -7,7 +7,7 @@ public class Graph<T> {
     private CustomArrayList<Node<T>> nodes;
 
     public Graph() {
-        this.nodes = new CustomArrayList<>();
+        this.nodes = new CustomArrayList<Node<T>>();
     }
 
     public CustomArrayList<Node<T>> getNodes()
@@ -24,4 +24,6 @@ public class Graph<T> {
     {
         return this.nodes.size();
     }
+
+    public Node getNode(int index) { return this.nodes.get(index); }
 }

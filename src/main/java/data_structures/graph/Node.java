@@ -11,12 +11,15 @@ public class Node<T> {
 
     private CustomArrayList<InboundEdge> inboundEdges;
 
-    private double pageRank;
+    private double currentPageRank;
+
+    private double nextPageRank;
 
 
     public Node(T value) {
         this.value = value;
-        this.pageRank = 0.0;
+        this.currentPageRank = 0.0;
+        this.nextPageRank = 0.0;
         this.outboundEdges = new CustomArrayList<>();
         this.inboundEdges = new CustomArrayList<>();
     }
@@ -37,14 +40,14 @@ public class Node<T> {
         this.outboundEdges = outboundEdges;
     }
 
-    public void getOutboundEdge(OutboundEdge e)
+    public void getOutboundEdge(int index)
     {
-        this.outboundEdges.add(e);
+        this.outboundEdges.get(index);
     }
 
-    public OutboundEdge getInboundEdge(int index)
+    public InboundEdge getInboundEdge(int index)
     {
-        return this.outboundEdges.get(index);
+        return this.inboundEdges.get(index);
     }
 
     public void addOutboundEdge( OutboundEdge e ) {
@@ -57,11 +60,23 @@ public class Node<T> {
     }
 
 
-    public double getPageRank() {
-        return pageRank;
+    public double getCurrentPageRank() {
+        return currentPageRank;
     }
 
-    public void setPageRank(double pageRank) {
-        this.pageRank = pageRank;
+    public void setCurrentPageRank(double currentPageRank) {
+        this.currentPageRank = currentPageRank;
     }
+
+    public double getNextPageRank() {
+        return nextPageRank;
+    }
+
+    public void setNextPageRank(double nextPageRank) {
+        this.nextPageRank = nextPageRank;
+    }
+
+    public double getReferenceCount() { return this.outboundEdges.size();  }
+
+    public int getInboundEdgeCount() { return this.inboundEdges.size(); }
 }
