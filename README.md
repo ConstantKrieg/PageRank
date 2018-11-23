@@ -9,5 +9,11 @@ Implementation of the PageRank algorithm with Java
 
 [**Weekly reports**](https://github.com/ConstantKrieg/PageRank/tree/master/doc/weekly%20reports)
 
+Currently the projects main class will count the PageRank values for the following graph:
+
+![GRAPH](https://github.com/ConstantKrieg/PageRank/blob/master/doc/example_graph.png?raw=true)
+
+Currently it is assumed that the weight of every node is 1.
+
 
 
