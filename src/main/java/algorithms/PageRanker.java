@@ -16,7 +16,8 @@ public class PageRanker {
     {
         initializePageRankValueForNodes(g.getNodes());
 
-        for (int j = 0; j < 2; j++)
+        //Currently just does this 14 times, convergence check not implemented yet
+        for (int j = 0; j < 14; j++)
         {
             for (int i = 0; i < g.nodeCount(); i++) {
                 updatePageRankScore(g.getNode(i));
@@ -83,7 +84,7 @@ public class PageRanker {
         System.out.println("Combined pagerank:  " + result);
 
         //PageRank should form a probability distribution so combined PageRank should always be 1
-        return result == 1.0;
+        return round(result, 4) == 1.0;
     }
 
 }
