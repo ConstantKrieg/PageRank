@@ -4,8 +4,8 @@ import data_structures.CustomArrayList;
 import data_structures.graph.Graph;
 import data_structures.graph.Node;
 
-import static algorithms.NumberUtils.floor;
 import static algorithms.NumberUtils.round;
+import static algorithms.sorting.QuickSorter.quicksort;
 
 public class PageRanker {
 
@@ -23,6 +23,8 @@ public class PageRanker {
             }
             updatePageRankScoresAfterIteration(g.getNodes());
         }
+
+        quicksort(g.getNodes(), 0, g.nodeCount() - 1);
 
     }
 
