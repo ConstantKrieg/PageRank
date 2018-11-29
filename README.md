@@ -4,6 +4,19 @@ This project is a course work project for course TKT20010 Laboratory work for al
 
 Implementation of the PageRank algorithm with Java
 
+## How to run project
+[Gradle](https://gradle.org) is needed for this project to run.
+
+From Project root first do:
+
+`gradle build`
+
+and then
+
+`gradle run`
+
+
+## Documentation
 
 [**Specification**](https://github.com/ConstantKrieg/PageRank/blob/master/doc/specification.md)
 
