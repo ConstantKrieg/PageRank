@@ -81,7 +81,7 @@ public class PageRanker {
 
         }
 
-        System.out.println("Combined pagerank:  " + result);
+        System.out.println("Combined pagerank:  " + round(result, 4));
 
         //PageRank should form a probability distribution so combined PageRank should always be 1
         return round(result, 4) == 1.0;
