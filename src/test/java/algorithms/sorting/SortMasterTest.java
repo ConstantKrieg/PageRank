@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.Random;
 
 import static algorithms.sorting.SortMaster.insertionSort;
-import static algorithms.sorting.SortMaster.quicksort;
+import static algorithms.sorting.SortMaster.sort;
 import static org.junit.Assert.assertTrue;
 
 public class SortMasterTest {
@@ -18,7 +18,7 @@ public class SortMasterTest {
     public void testQuickSort()
     {
         CustomArrayList<Node> list = generateNodeList( 200 );
-        quicksort(list, 0, list.size() - 1);
+        sort(list, 0, list.size() - 1);
 
         for (int i = 1; i < 200; i++) {
             assertTrue( list.get( i-1 ).getCurrentPageRank() <= list.get(i).getCurrentPageRank() );

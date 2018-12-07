@@ -6,6 +6,8 @@ import data_structures.graph.InboundEdge;
 import data_structures.graph.Node;
 import data_structures.graph.OutboundEdge;
 
+import java.util.Random;
+
 public class GraphGenerator {
 
     public static Graph<Character> generateExampleGraph()
@@ -135,4 +137,58 @@ public class GraphGenerator {
         return g;
 
     }
+
+
+
+    public static Graph<Integer> generateRandomGraph( int size ){
+        Random random = new Random();
+        Graph<Integer> graph = new Graph<>();
+        Node<Integer> newNode;
+
+        for (int i = 0; i < size; i++) {
+            newNode = new Node<>(i+1);
+            graph.addNode(newNode);
+        }
+
+        Node<Integer> currentNode;
+        for (int i = 0; i < size; i++) {
+            currentNode = graph.getNode(i);
+            int amountOfPossibleReferences = random.nextInt(100);
+
+            for (int j = 0; j < amountOfPossibleReferences; j++) {
+                boolean hasEdge = random.nextBoolean();
+
+                if ( hasEdge )
+                {
+                    Node<Integer> referenceNode = graph.getNode(random.nextInt(size));
+
+                    if (!containsReferenceToNode(currentNode, referenceNode)) {
+                        InboundEdge inboundEdge = new InboundEdge(currentNode, 1);
+                        OutboundEdge outboundEdge = new OutboundEdge(referenceNode, 1);
+                        currentNode.addOutboundEdge(outboundEdge);
+                        referenceNode.addInboundEdge(inboundEdge);
+                    }
+                }
+            }
+
+        }
+        return graph;
+    }
+
+
+    private static boolean containsReferenceToNode(Node<Integer> a, Node<Integer> b)
+    {
+
+        for (int i = 0; i < a.getOutboundEdges().size(); i++) {
+            if (a.getOutboundEdges().get(i).getDestination().getValue() == b.getValue()) return true;
+        }
+
+        for (int i = 0; i < b.getOutboundEdges().size(); i++) {
+            if (b.getOutboundEdges().get(i).getDestination().getValue() == a.getValue()) return true;
+        }
+
+        return false;
+    }
+
+
 }

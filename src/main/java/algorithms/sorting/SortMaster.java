@@ -5,6 +5,12 @@ import data_structures.graph.Node;
 
 public class SortMaster {
 
+    /**
+     * Swaps the places of two items in the array
+     * @param list that contains the two items that are to be swapped
+     * @param a First item in the swap
+     * @param b Second item in the swap
+     */
     private static void swap (CustomArrayList<Node> list, int a, int b)
     {
         Node temporary = list.get(a);
@@ -13,6 +19,13 @@ public class SortMaster {
         list.put(b, temporary);
     }
 
+    /**
+     * Rearranges a list by choosing a pivot and then moves every item larger than the pivot to the right side of it
+     * and every item smaller than the pivot to the left side of it
+     * @param list The list that is to be partitioned
+     * @param a Starting index of the sublist that is going to be partitioned
+     * @param b End index of the sublist that is going to be partitioned
+     */
     private static int partition(CustomArrayList<Node> list, int a, int b)
     {
 
@@ -36,8 +49,13 @@ public class SortMaster {
         return k;
     }
 
-
-    public static void quicksort(CustomArrayList<Node> list, int a, int b)
+    /**
+     * Sorts the list either by using sort or insertion sort
+     * @param list The list that is to be sorted
+     * @param a Starting index of the sublist that is going to be sorted
+     * @param b End index of the sublist that is going to be sorted
+     */
+    public static void sort(CustomArrayList<Node> list, int a, int b)
     {
         if (a >= b) return;
 
@@ -48,12 +66,18 @@ public class SortMaster {
         } else
         {
             int pivot = partition(list, a, b);
-            quicksort(list, a,pivot-1);
-            quicksort(list, pivot+1, b);
+            sort(list, a,pivot-1);
+            sort(list, pivot+1, b);
         }
 
     }
 
+    /**
+     * Performs an insertion sort
+     * @param list The list that is to be sorted
+     * @param a Starting index of the sublist that is going to be sorted
+     * @param b End index of the sublist that is going to be sorted
+     */
     public static void insertionSort(CustomArrayList<Node> list, int a, int b)
     {
         for (int i = a; i <= b; i++)

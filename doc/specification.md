@@ -11,17 +11,19 @@ The algorithm will also sort the ranked items and show the ranking to user.
 
 PageRank works with the following formula:
 
-**PR(A) = (1-d) + d (PR(W1)/C(W1) + ... + PR(Wn)/C(Wn))**
+**PR(A) = (1-d)/n + d (PR(W1)/C(W1) + ... + PR(Wn)/C(Wn))**
 
 Where :
- - PR(A) – Page Rank of page A
- - PR(Wi) – Page Rank of pages Wi which link to page A
+ - n - number of nodes in the graph
+ - PR(A) – Page Rank of node A
+ - PR(Wi) – Page Rank of nodes Wi which link to page A
  - C(Wi) - number of outbound links on page Wi
  - d - damping factor which can be set between 0 and 1
  
 
 ### Time complexity
-PageRank works in **O(n+m)** where n is the number of items in the set and n is the number of references in the set
+PageRank works in **O(n+m)** where n is the number of nodes in the graph and m is the number of references in the set
+
 
 ### Detailed explanation
 
@@ -49,5 +51,6 @@ This is done until the PageRank-values of nodes won't change more then a predefi
 
 ## Data structures
 PageRank will take at first a directed graph as an argument with nodes being the ranked items. Every data structure will be
-implemented from the beginning. There will also be a functionality to convert undirected graphs into directed ones.
+implemented from the beginning. 
 
+A list is also used for the graph to handle nodes and for nodes to handle edges

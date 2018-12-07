@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 import static utils.GraphGenerator.generateExampleGraph;
-import static utils.GraphGenerator.generateIntegerGraph;
+import static utils.GraphGenerator.generateRandomGraph;
 
 public class PageRankerTest {
 
@@ -21,9 +21,11 @@ public class PageRankerTest {
     @Test
     public void testPageRanker2()
     {
-        Graph<Integer> g = generateIntegerGraph(200);
+        Graph<Integer> g = generateRandomGraph(100000);
         PageRanker pageRanker = new PageRanker();
-        pageRanker.pageRank(g);
+        int iterations = pageRanker.pageRank(g);
         assertTrue(pageRanker.validatePageRankResult(g));
+        System.out.println(g.getNode(0).getCurrentPageRank());
+        System.out.println("Took " + iterations + " iterations");
     }
 }
