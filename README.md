@@ -19,6 +19,8 @@ and then
 ## Documentation
 
 [**Specification**](https://github.com/ConstantKrieg/PageRank/blob/master/doc/specification.md)
+[**Implementation**](https://github.com/ConstantKrieg/PageRank/blob/master/doc/implementation.md)
+[**Testing**](https://github.com/ConstantKrieg/PageRank/blob/master/doc/testing.md)
 
 [**Weekly reports**](https://github.com/ConstantKrieg/PageRank/tree/master/doc/weekly%20reports)
 
