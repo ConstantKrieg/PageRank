@@ -72,7 +72,7 @@ public class GraphGenerator {
     }
 
 
-    static Graph<Integer> generateIntegerGraph(int size)
+    public static Graph<Integer> generateIntegerGraph(int size)
     {
         Graph<Integer> g = new Graph<>();
 

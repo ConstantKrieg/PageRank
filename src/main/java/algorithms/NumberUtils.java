@@ -28,6 +28,12 @@ public class NumberUtils {
         return x < intx ? intx - 1 : intx;
     }
 
+    public static double countDifference(double a, double b)
+    {
+        if (a > b) return a-b;
+        else return b-a;
+    }
+
 
 
 }

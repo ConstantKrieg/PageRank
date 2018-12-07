@@ -7,10 +7,11 @@ import org.junit.Test;
 
 import java.util.Random;
 
-import static algorithms.sorting.QuickSorter.quicksort;
+import static algorithms.sorting.SortMaster.insertionSort;
+import static algorithms.sorting.SortMaster.quicksort;
 import static org.junit.Assert.assertTrue;
 
-public class QuickSorterTest {
+public class SortMasterTest {
 
 
     @Test
@@ -25,6 +26,16 @@ public class QuickSorterTest {
     }
 
 
+    @Test
+    public void testInsertionSort()
+    {
+        CustomArrayList<Node> list = generateNodeList( 20 );
+        insertionSort(list, 0, list.size() - 1);
+
+        for (int i = 1; i < 20; i++) {
+            assertTrue( list.get( i-1 ).getCurrentPageRank() <= list.get(i).getCurrentPageRank() );
+        }
+    }
 
     private CustomArrayList<Node> generateNodeList(int size)
     {
