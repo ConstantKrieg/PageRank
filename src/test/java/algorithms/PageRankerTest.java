@@ -21,11 +21,11 @@ public class PageRankerTest {
     @Test
     public void testPageRanker2()
     {
-        Graph<Integer> g = generateRandomGraph(100000);
+        Graph<Integer> g = generateRandomGraph(50000);
         PageRanker pageRanker = new PageRanker();
         int iterations = pageRanker.pageRank(g);
-        assertTrue(pageRanker.validatePageRankResult(g));
-        System.out.println(g.getNode(0).getCurrentPageRank());
         System.out.println("Took " + iterations + " iterations");
+        assertTrue(pageRanker.validatePageRankResult(g));
+
     }
 }

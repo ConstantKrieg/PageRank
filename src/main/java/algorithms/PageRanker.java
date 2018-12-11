@@ -11,9 +11,10 @@ import static algorithms.sorting.SortMaster.sort;
 public class PageRanker {
 
 
-    private final double dampingFactor = 0.85;
+    private final double dampingFactor = 0.65;
     private final double convergenceThreshold = 0.0001;
 
+    private CustomArrayList<Node> sinks;
     private double combinedSinkPageRank;
 
     private boolean hasNotConverged;
@@ -26,8 +27,10 @@ public class PageRanker {
      */
     public int pageRank( Graph g )
     {
+        sinks = new CustomArrayList<>();
         hasNotConverged = true;
         combinedSinkPageRank = 0.0;
+        collectSinks(g);
         initializePageRankValueForNodes(g.getNodes());
 
         int iterations = 1;
@@ -37,16 +40,29 @@ public class PageRanker {
                 updatePageRankScore(g.getNode(i));
             }
             updatePageRankScoresAfterIteration(g.getNodes());
+
+            double combinedPR = 0.0;
+            for (int i = 0; i < g.nodeCount(); i++) {
+                combinedPR += g.getNode(i).getCurrentPageRank();
+            }
             iterations++;
         }
 
-        handleSinks(g.getNodes());
-        finalizePageRankValues(g.getNodes());
+       // handleSinks(g.getNodes());
+       // finalizePageRankValues(g.getNodes());
         sort(g.getNodes(), 0, g.nodeCount() - 1);
 
         return iterations;
     }
 
+    private void collectSinks(Graph graph)
+    {
+        Node currentNode;
+        for (int i = 0; i < graph.nodeCount(); i++) {
+            currentNode = graph.getNode(i);
+            if (currentNode.getReferenceCount() == 0.0) sinks.add(currentNode);
+        }
+    }
 
     /**
      * After completing the PageRank counts the final PageRank-value using the
@@ -59,7 +75,7 @@ public class PageRanker {
         Node node;
         for (int i = 0; i < nodeList.size(); i++) {
             node = nodeList.get(i);
-            finalPageRank = ((1 - dampingFactor) / nodeList.size()) + ( dampingFactor * node.getCurrentPageRank()) + (dampingFactor * combinedSinkPageRank);
+            finalPageRank = ((1 - dampingFactor) / nodeList.size()) + ( dampingFactor * node.getCurrentPageRank()) + (dampingFactor * (combinedSinkPageRank / sinks.size()));
             node.setCurrentPageRank(finalPageRank);
         }
     }
@@ -95,15 +111,23 @@ public class PageRanker {
 
         boolean noConvergence = false;
 
+        double combinedSinksPR = 0.0;
+        for (int i = 0; i < sinks.size(); i++) {
+            combinedSinksPR += sinks.get(i).getCurrentPageRank() / nodeList.size();
+        }
+
+
         for (int i = 0; i < nodeList.size(); i++) {
             Node node = nodeList.get(i);
 
-            double difference = countDifference(node.getCurrentPageRank(), node.getNextPageRank());
-            if (difference > convergenceThreshold) noConvergence = true;
+            double oldPR = node.getCurrentPageRank();
 
-            node.setCurrentPageRank(node.getNextPageRank());
+            node.setCurrentPageRank(((1 - dampingFactor) / nodeList.size()) + ( dampingFactor * node.getNextPageRank()) + (dampingFactor * combinedSinksPR));
             node.setNextPageRank(0.0);
             nodeList.put(i, node);
+
+            double difference = countDifference(node.getCurrentPageRank(), oldPR);
+            if (difference > convergenceThreshold) noConvergence = true;
         }
 
         hasNotConverged = noConvergence;
