@@ -21,14 +21,15 @@ Here is the pseudocode of this PageRank implementation
 for every node in graph do
     give initial value
 for every node in graph do
-    check if sink 
+   if sink do
+      add to sinks
 while has not converged do
     for every node in graph do
         for every inbound edge in node do
             add a value from the PageRank of source of the edge to current node
-for every node in graph do 
-    add missing PageRank from sinks to PageRank
-    add the damping factor to PageRank
+    handle sinks
+    for every node in graph do
+        update the pagerank according to the formula
 ```
 
 The amount of iterations needed for the graph to converge varies depending on the structure of the edges in the graph and not the amount of them
