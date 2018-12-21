@@ -26,6 +26,10 @@ and then
 
 [**Testing**](https://github.com/ConstantKrieg/PageRank/blob/master/doc/testing.md)
 
+[**Javadoc**](https://github.com/ConstantKrieg/PageRank/tree/master/doc/javadoc)
+
+[**Code coverage**](https://github.com/ConstantKrieg/PageRank/tree/master/doc/pagerank_coverage)
+
 [**Weekly reports**](https://github.com/ConstantKrieg/PageRank/tree/master/doc/weekly%20reports)
 
 Currently the projects main class will count the PageRank values for the following graph:
