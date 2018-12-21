@@ -19,12 +19,12 @@ Here you will find picture of the graphs and why we are testing them.
 
 Here is just a specific graph. Correct PageRank order should be from biggest to smallest 5, 4, 3, 2, 1. 
 
-[Image of specific graph]
+![specific_graph](https://github.com/ConstantKrieg/PageRank/blob/master/doc/images/specificGraph.PNG?raw=true)
 
 
 ### Sinks
 
-[Image of SinkGraph]
+![sink_graph](https://github.com/ConstantKrieg/PageRank/blob/master/doc/images/sinkGraph.PNG?raw=true)
 
 Here we have graph that contains a **sink**. A sink is a node that has no outgoing edges like node 3 in this graph.
 This results in a situation where some of the PageRank disappears. There are couple of ways to handling them but in my case
@@ -35,7 +35,7 @@ you then continue to some random site.
 
 ### No edges
 
-[Image of noedgesgraph]
+![noedgesgraph](https://github.com/ConstantKrieg/PageRank/blob/master/doc/images/noEdgesGraph.PNG?raw=true)
 
 Here we have a graph with only nodes that have no connection to the other nodes. In this case we verify that every node 
 has the initial PageRank they have been given at the beginning and that the process terminates after two iterations because
@@ -50,7 +50,7 @@ PageRank values cannot be updated.
  
  ### Only one node links to every other node
 
-[Image of one to every node]
+![one_to_all](https://github.com/ConstantKrieg/PageRank/blob/master/doc/images/onetoallgraph.PNG?raw=true)
 
 In this graph one node links to every other node. This results in the situation where the node that links to everything else
 has a smaller PageRank than the other nodes and the other node's PageRank is equal to another. This is because the only way to
@@ -74,15 +74,16 @@ where N is the amount of nodes and M the amount of edges in the graph.
  
 Here is how a diagram would look with formula (N + M) + (N log N)
 
-[Image of graph with ]
+![tc](https://github.com/ConstantKrieg/PageRank/blob/master/doc/images/tc_diagram.PNG?raw=true)
 
 
 This project has a performance test that generates a random graph 100 times with every different N and M specified 
 in the diagram above. Then the average execution time of those 100 PageRanks is calculated for every values of N and M.
 Similar diagram with the times instead of time complexity formula looks like this:
 
-[Image of time diagram]
+![time](https://github.com/ConstantKrieg/PageRank/blob/master/doc/images/timediagram.PNG?raw=true)
   
+  **y-axis is the average amount of milliseconds it took to rank the graph**
   
 We can clearly see that the two diagram are alike so we achieved the time complexity that was specified.
  
