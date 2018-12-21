@@ -2,6 +2,10 @@ package data_structures.graph;
 
 import data_structures.CustomArrayList;
 
+/**
+ * An implementation of a single node/vertex in a graph
+ * @param <T> Type of the attribute node has as an value
+ */
 public class Node<T> {
 
 

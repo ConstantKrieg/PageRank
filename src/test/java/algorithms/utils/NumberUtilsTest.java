@@ -1,9 +1,9 @@
-package algorithms;
+package algorithms.utils;
 
 import org.junit.Test;
 
-import static algorithms.NumberUtils.floor;
-import static algorithms.NumberUtils.round;
+import static utils.NumberUtils.floor;
+import static utils.NumberUtils.round;
 import static org.junit.Assert.assertEquals;
 
 public class NumberUtilsTest {

@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: NumberUtils</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">utils</a> ]
+</div>
+
+<h1>Coverage Summary for Class: NumberUtils (utils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">NumberUtils</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91,7%
+  </span>
+  <span class="absValue">
+    (11/ 12)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package utils;
+<i>2</i>&nbsp;
+<b class="nc"><i>3</i>&nbsp;public class NumberUtils {</b>
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;    /**
+<i>7</i>&nbsp;     * Rounds a floating point number to a fixed decimal
+<i>8</i>&nbsp;     * @param x Number to be rounded
+<i>9</i>&nbsp;     * @param decimals Amount of decimals wanted
+<i>10</i>&nbsp;     * @return rounded number
+<i>11</i>&nbsp;     */
+<i>12</i>&nbsp;    public static double round(double x, int decimals)
+<i>13</i>&nbsp;    {
+<i>14</i>&nbsp;
+<b class="fc"><i>15</i>&nbsp;        int decimalsToTen = 10;</b>
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;
+<b class="fc"><i>18</i>&nbsp;        for (int i = 1; i &lt; decimals; i++)</b>
+<i>19</i>&nbsp;        {
+<b class="fc"><i>20</i>&nbsp;            decimalsToTen *= 10;</b>
+<i>21</i>&nbsp;        }
+<i>22</i>&nbsp;
+<b class="fc"><i>23</i>&nbsp;        x = x * decimalsToTen;</b>
+<b class="fc"><i>24</i>&nbsp;        x = floor(x + 0.5);</b>
+<b class="fc"><i>25</i>&nbsp;        x = x / decimalsToTen;</b>
+<i>26</i>&nbsp;
+<b class="fc"><i>27</i>&nbsp;        return x;</b>
+<i>28</i>&nbsp;    }
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    /**
+<i>32</i>&nbsp;     * Gives the largest integer less than or equal to the given double
+<i>33</i>&nbsp;     * @param x the double that is to be floored
+<i>34</i>&nbsp;     * @return Largest integer less than or equal to the given double
+<i>35</i>&nbsp;     */
+<i>36</i>&nbsp;    public static int floor (double x)
+<i>37</i>&nbsp;    {
+<b class="fc"><i>38</i>&nbsp;        int intx = (int) x;</b>
+<b class="fc"><i>39</i>&nbsp;        return x &lt; intx ? intx - 1 : intx;</b>
+<i>40</i>&nbsp;    }
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;    /**
+<i>43</i>&nbsp;     * Counts the difference between two doubles
+<i>44</i>&nbsp;     * @param a First double
+<i>45</i>&nbsp;     * @param b Second double
+<i>46</i>&nbsp;     * @return difference between a and b
+<i>47</i>&nbsp;     */
+<i>48</i>&nbsp;    public static double countDifference(double a, double b)
+<i>49</i>&nbsp;    {
+<b class="fc"><i>50</i>&nbsp;        if (a &gt; b) return a-b;</b>
+<b class="fc"><i>51</i>&nbsp;        else return b-a;</b>
+<i>52</i>&nbsp;    }
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-12-21 19:12</div>
+</div>
+</body>
+</html>

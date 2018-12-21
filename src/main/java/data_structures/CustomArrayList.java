@@ -1,6 +1,9 @@
 package data_structures;
 
-
+/**
+ * An implementation of an ArrayList
+ * @param <T> Type of objects list stores
+ */
 public class CustomArrayList<T> {
 
     private final int DEFAULT_CAPACITY = 20;
@@ -19,6 +22,10 @@ public class CustomArrayList<T> {
         capacity = DEFAULT_CAPACITY;
     }
 
+    /**
+     * Adds an item to the list
+     * @param t item to be added
+     */
     public void add ( T t )
     {
         if (this.size==this.capacity -1)
@@ -29,6 +36,11 @@ public class CustomArrayList<T> {
         elements[this.size++] = t;
     }
 
+    /**
+     * Returns an object from the list
+     * @param index Index of the sought object
+     * @return the object that was found in index
+     */
     public T get( int index )
     {
         if ( index >= this.size  || index < 0 )
@@ -39,6 +51,10 @@ public class CustomArrayList<T> {
         return (T) this.elements[index];
     }
 
+    /**
+     * Removes an object from the list
+     * @param index index of the object that is removed
+     */
     public void remove(int index)
     {
         if ( index >= this.size  || index < 0 )
@@ -57,6 +73,11 @@ public class CustomArrayList<T> {
 
     }
 
+    /**
+     * Adds an object to the list in a specific location
+     * @param index Index where the objectg will be stored
+     * @param object Object that will be stored
+     */
     public void put(int index, T object)
     {
         if ( index >= this.size  || index < 0 )
@@ -80,6 +101,10 @@ public class CustomArrayList<T> {
         }
     }
 
+    /**
+     * Amount of objects stored in the list
+     * @return size of the list
+     */
     public int size()
     {
         return this.size;

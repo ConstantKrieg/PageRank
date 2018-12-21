@@ -4,15 +4,15 @@ import data_structures.CustomArrayList;
 import data_structures.graph.Graph;
 import data_structures.graph.Node;
 
-import static algorithms.NumberUtils.countDifference;
-import static algorithms.NumberUtils.round;
+import static utils.NumberUtils.countDifference;
+import static utils.NumberUtils.round;
 import static algorithms.sorting.SortMaster.sort;
 
 public class PageRanker {
 
 
     private final double dampingFactor = 0.65;
-    private final double convergenceThreshold = 0.0001;
+    private double convergenceThreshold;
 
     private CustomArrayList<Node> sinks;
     private double combinedSinkPageRank;
@@ -28,6 +28,7 @@ public class PageRanker {
     public int pageRank( Graph g )
     {
         sinks = new CustomArrayList<>();
+        convergenceThreshold = 1.0 / (g.nodeCount() * 1000.0);
         hasNotConverged = true;
         combinedSinkPageRank = 0.0;
         collectSinks(g);
@@ -39,19 +40,16 @@ public class PageRanker {
             for (int i = 0; i < g.nodeCount(); i++) {
                 updatePageRankScore(g.getNode(i));
             }
-            updatePageRankScoresAfterIteration(g.getNodes());
 
-            double combinedPR = 0.0;
-            for (int i = 0; i < g.nodeCount(); i++) {
-                combinedPR += g.getNode(i).getCurrentPageRank();
+            double combinedSinksPR = 0.0;
+            for (int i = 0; i < sinks.size(); i++) {
+                combinedSinksPR += sinks.get(i).getCurrentPageRank() / g.nodeCount() ;
             }
+            updatePageRankScoresAfterIteration(g.getNodes(), combinedSinksPR);
             iterations++;
         }
 
-       // handleSinks(g.getNodes());
-       // finalizePageRankValues(g.getNodes());
         sort(g.getNodes(), 0, g.nodeCount() - 1);
-
         return iterations;
     }
 
@@ -104,18 +102,12 @@ public class PageRanker {
      * the one that was marked the next value in previous iteration
      * @param nodeList List of nodes that are updated
      */
-    private void updatePageRankScoresAfterIteration(CustomArrayList<Node>  nodeList)
+    private void updatePageRankScoresAfterIteration(CustomArrayList<Node>  nodeList, double combinedSinksPR)
     {
         //Updates the scores for every node and compares new score to the old one
         //This difference is used to determine if the graph has converged
 
         boolean noConvergence = false;
-
-        double combinedSinksPR = 0.0;
-        for (int i = 0; i < sinks.size(); i++) {
-            combinedSinksPR += sinks.get(i).getCurrentPageRank() / nodeList.size();
-        }
-
 
         for (int i = 0; i < nodeList.size(); i++) {
             Node node = nodeList.get(i);
@@ -197,10 +189,10 @@ public class PageRanker {
 
         }
 
-        System.out.println("Combined pagerank:  " + round(result, 2));
+        System.out.println("Combined pagerank:  " + round(result, 7));
 
         //PageRank should form a probability distribution so combined PageRank should always be 1
-        return round(result, 2) == 1.0;
+        return round(result, 7) == 1.0;
     }
 
 }

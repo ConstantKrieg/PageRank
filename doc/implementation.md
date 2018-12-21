@@ -37,4 +37,5 @@ but even for large graphs it is usually under 100.
 Because a certain edge can only be between to nodes, all the edges are traversed through once when updating the score.
 
 So the detailed time complexity is **O(3N + C(N+M) )** where N s the number of nodes in the graph, M is the number of edges in the graph,
-and c is the iterations that are needed.
+and c is the iterations that are needed. Sorting has the time complexity of **O(N log N)** so the complete time complexity of 
+this PageRank is **O((N + M) + (N log N))** 

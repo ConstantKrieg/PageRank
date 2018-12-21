@@ -1,6 +1,5 @@
 package utils;
 
-import data_structures.CustomArrayList;
 import data_structures.graph.Graph;
 import data_structures.graph.InboundEdge;
 import data_structures.graph.Node;
@@ -73,107 +72,40 @@ public class GraphGenerator {
         return g;
     }
 
-
-    public static Graph<Integer> generateIntegerGraph(int size)
+    public static Graph<Integer> generateGraphWithSpecificAmountOfNodesAndEdges(int nodeCount, int edgeCount)
     {
-        Graph<Integer> g = new Graph<>();
-
-        CustomArrayList<Node<Integer>> nodes = new CustomArrayList<>();
-
-        for (int i = 0; i < size; i++) {
-            Node<Integer> node = new Node<>(i);
-            nodes.add(node);
-        }
-
-        Node<Integer> currentNode;
-        Node<Integer> reference1;
-        Node<Integer> reference2;
-        Node<Integer> reference3;
-        OutboundEdge edge;
-        OutboundEdge edge2;
-        OutboundEdge edge3;
-        InboundEdge iedge;
-        InboundEdge iedge2;
-        InboundEdge iedge3;
-
-        for (int i = 0; i < nodes.size(); i++) {
-
-            currentNode = nodes.get(i);
-
-            reference1 = nodes.get((i + 3) % size);
-            reference2 = nodes.get((i + 7) % size);
-            reference3 = nodes.get((i+11) % size);
-            edge = new OutboundEdge(reference1, 1);
-            edge2 = new OutboundEdge(reference2, 1);
-            edge3 = new OutboundEdge(reference3, 1);
-            iedge = new InboundEdge(currentNode, 1);
-
-
-
-            if( i != 1 && i % 12 == 0)
-            {
-                currentNode.addOutboundEdge(edge3);
-                reference3.addInboundEdge(iedge);
-            }
-            else if ( i != 1 && i % 3 == 0)
-            {
-                currentNode.addOutboundEdge(edge);
-                reference1.addInboundEdge(iedge);
-            } else if ( i != 1 && i % 4 == 0)
-            {
-                currentNode.addOutboundEdge(edge2);
-                reference2.addInboundEdge(iedge);
-            } else
-            {
-                currentNode.addOutboundEdge(edge);
-                currentNode.addOutboundEdge(edge2);
-                reference1.addInboundEdge(iedge);
-                reference2.addInboundEdge(iedge);
-            }
-
-            g.addNode(currentNode);
-        }
-
-        return g;
-
-    }
-
-
-
-    public static Graph<Integer> generateRandomGraph( int size ){
-        Random random = new Random();
         Graph<Integer> graph = new Graph<>();
         Node<Integer> newNode;
+        Random random = new Random();
 
-        for (int i = 0; i < size; i++) {
-            newNode = new Node<>(i+1);
+        for (int i = 0; i < nodeCount; i++)
+        {
+            newNode = new Node<>(i);
             graph.addNode(newNode);
         }
 
-        Node<Integer> currentNode;
-        for (int i = 0; i < size; i++) {
-            currentNode = graph.getNode(i);
-            int amountOfPossibleReferences = random.nextInt(100);
+        Node aNode;
+        Node bNode;
+        InboundEdge iEdge;
+        OutboundEdge oEdge;
 
-            for (int j = 0; j < amountOfPossibleReferences; j++) {
-                boolean hasEdge = random.nextBoolean();
+        for (int i = 0; i < edgeCount; i++)
+        {
+            aNode = graph.getNode(random.nextInt(nodeCount));
+            bNode = graph.getNode(random.nextInt(nodeCount));
 
-                if ( hasEdge )
-                {
-                    Node<Integer> referenceNode = graph.getNode(random.nextInt(size));
+            while (containsReferenceToNode(aNode, bNode)) bNode = graph.getNode(random.nextInt(nodeCount));
 
-                    if (!containsReferenceToNode(currentNode, referenceNode)) {
-                        InboundEdge inboundEdge = new InboundEdge(currentNode, 1);
-                        OutboundEdge outboundEdge = new OutboundEdge(referenceNode, 1);
-                        currentNode.addOutboundEdge(outboundEdge);
-                        referenceNode.addInboundEdge(inboundEdge);
-                    }
-                }
-            }
+            iEdge = new InboundEdge(aNode);
+            oEdge = new OutboundEdge(bNode);
+
+            aNode.addOutboundEdge(oEdge);
+            bNode.addInboundEdge(iEdge);
 
         }
         return graph;
     }
+
 
 
     private static boolean containsReferenceToNode(Node<Integer> a, Node<Integer> b)

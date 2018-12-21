@@ -1,0 +1,133 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Graph</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">data_structures.graph</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Graph (data_structures.graph)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Graph</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/ 8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package data_structures.graph;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import data_structures.CustomArrayList;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; * Implementation of a graph data structure
+<i>7</i>&nbsp; * @param &lt;T&gt; Type of objects in the nodes
+<i>8</i>&nbsp; */
+<i>9</i>&nbsp;public class Graph&lt;T&gt; {
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    private CustomArrayList&lt;Node&lt;T&gt;&gt; nodes;
+<i>12</i>&nbsp;
+<b class="fc"><i>13</i>&nbsp;    public Graph() {</b>
+<b class="fc"><i>14</i>&nbsp;        this.nodes = new CustomArrayList&lt;Node&lt;T&gt;&gt;();</b>
+<b class="fc"><i>15</i>&nbsp;    }</b>
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * Returns nodes of this graph as an arraylist
+<i>19</i>&nbsp;     * @return Nodes as an arraylist
+<i>20</i>&nbsp;     */
+<i>21</i>&nbsp;    public CustomArrayList&lt;Node&lt;T&gt;&gt; getNodes()
+<i>22</i>&nbsp;    {
+<b class="fc"><i>23</i>&nbsp;        return nodes;</b>
+<i>24</i>&nbsp;    }
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    /**
+<i>27</i>&nbsp;     * Adds a node in to the graph
+<i>28</i>&nbsp;     * @param node Node to be added
+<i>29</i>&nbsp;     */
+<i>30</i>&nbsp;    public void addNode( Node&lt;T&gt; node )
+<i>31</i>&nbsp;    {
+<b class="fc"><i>32</i>&nbsp;        this.nodes.add( node );</b>
+<b class="fc"><i>33</i>&nbsp;    }</b>
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    /**
+<i>36</i>&nbsp;     * Returns the amount of nodes in the graph
+<i>37</i>&nbsp;     * @return amount of nodes in the graph
+<i>38</i>&nbsp;     */
+<i>39</i>&nbsp;    public int nodeCount()
+<i>40</i>&nbsp;    {
+<b class="fc"><i>41</i>&nbsp;        return this.nodes.size();</b>
+<i>42</i>&nbsp;    }
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    /**
+<i>45</i>&nbsp;     * Returns a specific node from a specific index
+<i>46</i>&nbsp;     * @param index Index of the wanted node
+<i>47</i>&nbsp;     * @return Node in the index
+<i>48</i>&nbsp;     */
+<b class="fc"><i>49</i>&nbsp;    public Node getNode(int index) { return this.nodes.get(index); }</b>
+<i>50</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-12-21 19:12</div>
+</div>
+</body>
+</html>

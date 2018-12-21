@@ -1,0 +1,126 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: GraphConverter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">utils</a> ]
+</div>
+
+<h1>Coverage Summary for Class: GraphConverter (utils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">GraphConverter</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93,3%
+  </span>
+  <span class="absValue">
+    (14/ 15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package utils;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import data_structures.graph.Graph;
+<i>4</i>&nbsp;import data_structures.graph.InboundEdge;
+<i>5</i>&nbsp;import data_structures.graph.Node;
+<i>6</i>&nbsp;import data_structures.graph.OutboundEdge;
+<i>7</i>&nbsp;
+<b class="nc"><i>8</i>&nbsp;public class GraphConverter {</b>
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    public static Graph&lt;Integer&gt; convertMatrixToGraph( boolean[][] matrix)
+<i>12</i>&nbsp;    {
+<i>13</i>&nbsp;        Node&lt;Integer&gt; newNode;
+<b class="fc"><i>14</i>&nbsp;        Graph&lt;Integer&gt; graph = new Graph&lt;&gt;();</b>
+<i>15</i>&nbsp;
+<b class="fc"><i>16</i>&nbsp;        for (int i = 0; i &lt; matrix.length; i++) {</b>
+<b class="fc"><i>17</i>&nbsp;            newNode = new Node&lt;&gt;(i + 1);</b>
+<b class="fc"><i>18</i>&nbsp;            graph.addNode(newNode);</b>
+<i>19</i>&nbsp;        }
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;        Node&lt;Integer&gt; currentNode;
+<i>22</i>&nbsp;        Node&lt;Integer&gt; refNode;
+<i>23</i>&nbsp;        OutboundEdge newOEdge;
+<i>24</i>&nbsp;        InboundEdge newIEdge;
+<i>25</i>&nbsp;
+<b class="fc"><i>26</i>&nbsp;        for (int i = 0; i &lt; matrix.length; i++) {</b>
+<b class="fc"><i>27</i>&nbsp;            currentNode = graph.getNode(i);</b>
+<b class="fc"><i>28</i>&nbsp;            for (int j = 0; j &lt; matrix[i].length; j++) {</b>
+<b class="fc"><i>29</i>&nbsp;                if(matrix[i][j])</b>
+<i>30</i>&nbsp;                {
+<b class="fc"><i>31</i>&nbsp;                    refNode = graph.getNode(j);</b>
+<b class="fc"><i>32</i>&nbsp;                    newOEdge = new OutboundEdge(refNode);</b>
+<b class="fc"><i>33</i>&nbsp;                    newIEdge = new InboundEdge(currentNode);</b>
+<b class="fc"><i>34</i>&nbsp;                    currentNode.addOutboundEdge(newOEdge);</b>
+<b class="fc"><i>35</i>&nbsp;                    refNode.addInboundEdge(newIEdge);</b>
+<i>36</i>&nbsp;                }
+<i>37</i>&nbsp;            }
+<i>38</i>&nbsp;        }
+<i>39</i>&nbsp;
+<b class="fc"><i>40</i>&nbsp;        return graph;</b>
+<i>41</i>&nbsp;    }
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-12-21 19:12</div>
+</div>
+</body>
+</html>

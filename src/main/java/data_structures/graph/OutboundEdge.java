@@ -1,12 +1,22 @@
 package data_structures.graph;
 
+/**
+ * An edge that belong to the node it starts from
+ */
 public class OutboundEdge {
 
     private Node destination;
 
     private int weight;
 
-    public OutboundEdge(Node destination, int weight) {
+    public OutboundEdge(Node destination)
+    {
+     this.destination = destination;
+     this.weight = 1;
+    }
+
+    public OutboundEdge(Node destination, int weight)
+    {
         this.destination = destination;
         this.weight = weight;
     }
