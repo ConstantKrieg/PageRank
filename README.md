@@ -5,7 +5,7 @@ This project is a course work project for course TKT20010 Laboratory work for al
 Implementation of the PageRank algorithm with Java
 
 ## How to run project
-An executaböe .jar file can be downloaded [here](https://github.com/ConstantKrieg/PageRank/raw/master/pagerank-1.0-SNAPSHOT.jar)
+An executable .jar file can be downloaded [here](https://github.com/ConstantKrieg/PageRank/raw/master/pagerank-1.0-SNAPSHOT.jar)
 
 [Gradle](https://gradle.org) is needed for this project to run.
 
