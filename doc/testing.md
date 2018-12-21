@@ -43,7 +43,7 @@ PageRank values cannot be updated.
 
  ### Only edges to themselves.
  
- [Image of only edges to themselves]
+ ![themselves](https://github.com/ConstantKrieg/PageRank/blob/master/doc/images/edgestothemselvesgraph.PNG?raw=true)
  
  This case should be the same as the no edges one. PageRank cannot be updated so we verify that every node has the 
  initial PageRank value and that only two iterations are made.
